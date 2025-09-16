@@ -1,5 +1,6 @@
 import {User} from "./user"
 import {Movie} from "./movie"
+import {Master} from "./master"
 
 export class Team {
     id: string
@@ -36,5 +37,16 @@ export class Team {
 
     public teamWon(){
         this.won = this.hitsCount >= this.winQtt
+    }
+
+    public defineTeamMaster(user: User){
+        if(this.users.includes(user)){
+            const index = this.users.findIndex(u=>u.id === user.id)
+            if(index !== -1){
+                this.users.splice(index, 1)
+                const master = new Master(user.id,user.shortName)
+                this.users.push(master)
+            }
+        }
     }
 }

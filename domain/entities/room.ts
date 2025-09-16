@@ -2,6 +2,7 @@ import {User} from "./user"
 import {Team} from "./team"
 import { Movie } from "./movie"
 import { Category } from "./category"
+import { Master } from "./master"
 export class Room {
     id: string
     name: string
@@ -19,6 +20,21 @@ export class Room {
         this.category = category
 
         this.insertMovies()
+    }
+
+    public defineTeamMaster(idTeam: string, user: User){
+        this.teams.find(t=>t.id === idTeam)?.defineTeamMaster(user)
+    }
+
+    public addTip(user: User, tip: string){
+        this.teams.map(team=>{
+            if(team.users.includes(user)){
+                const master = team.users.find(u=>u === user)
+                if(master instanceof Master){
+                    master.addTip(tip)
+                }
+            }
+        })
     }
 
     public addUserInRoom(user: User): void{
