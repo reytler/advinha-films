@@ -66,10 +66,12 @@ export class Room {
     }
 
     public addUserInTeam(idTeam: string, user: User): void{
+        user.teamId = idTeam;
         this.teams.find((team:Team)=>team.id === idTeam)?.addUser(user)
     }
 
     public addMovieInTeam(idTeam: string, movie: Movie): void{
+        movie.teamId = idTeam;
         this.teams.find((team:Team)=>team.id === idTeam)?.addMovie(movie)
     }
 

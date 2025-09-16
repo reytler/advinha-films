@@ -44,7 +44,7 @@ export class Team {
             const index = this.users.findIndex(u=>u.id === user.id)
             if(index !== -1){
                 this.users.splice(index, 1)
-                const master = new Master(user.id,user.shortName)
+                const master = new Master(user.id,user.shortName,true)
                 this.users.push(master)
             }
         }
