@@ -10,16 +10,38 @@ export class Room {
     teams: Array<Team>
     movies: Array<Movie>
     category: Category
+    startedGame: boolean
 
-    constructor(id: string, name: string, teams: Array<Team>, category: Category){
+    constructor(id: string, name: string, teams: Array<Team>, category: Category,startedGame: boolean = false){
         this.id = id
         this.name = name
         this.users = [],
         this.teams = teams,
         this.movies = []
         this.category = category
+        this.startedGame = startedGame
 
         this.insertMovies()
+    }
+
+    public setStartedGame(startedGame: boolean){
+        if(this.teams[0].users.length > 0 && this.teams[1].users.length){
+            this.startedGame = startedGame
+        }
+    }
+
+    public removeUserOfRoom(user: User){
+        this.teams.map(team=>{
+            const index = team.users.indexOf(user) 
+            if(index !== -1){
+                team.users.splice(index,1)
+            }
+        })
+
+        const index = this.users.indexOf(user)
+        if(index !== -1){
+            this.users.splice(index,1)
+        }
     }
 
     public defineTeamMaster(idTeam: string, user: User){
@@ -38,7 +60,9 @@ export class Room {
     }
 
     public addUserInRoom(user: User): void{
-        this.users.push(user)
+        if(!this.startedGame){
+            this.users.push(user)
+        }
     }
 
     public addUserInTeam(idTeam: string, user: User): void{
