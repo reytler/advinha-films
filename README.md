@@ -5,7 +5,7 @@
 - É permitido jogar em duas equipes
 - Existem o mestre de cada equipe
     - Este mestre escolhe uma categoria de filmes(Ação, aventura, romance)
-    - Este mestre deve escolher 4 filmes do tema
+    - O time recebe 4 filmes randomicamente.
     - Ao decorrer do jogo o mestre vai dando dicas sobre o filme.
 - Existem os outros integrantes da equipe
     - Eles vão recebendo as dicas do mestre e tentando adivinhar o filme
