@@ -10,4 +10,8 @@ export class Category {
         this.name = name
         this.movies = movies
     }
+
+    public insertMovies(movies: Array<Movie>){
+        this.movies.concat(movies)
+    }
 }
