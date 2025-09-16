@@ -2,18 +2,22 @@ import {User} from "./user"
 import {Movie} from "./movie"
 
 export class Team {
-    color: string = ''
-    users: Array<User> = []
-    movies: Array<Movie> = []
-    hitsCount: number = 0
-    won: boolean = false
-    winQtt: number = 0
+    id: string
+    color: string
+    users: Array<User>
+    movies: Array<Movie>
+    hitsCount: number
+    won: boolean
+    winQtt: number
 
-    constructor(color: string,users: Array<User>,movies: Array<Movie>, winQtt: number){
+    constructor(id: string, color: string,users: Array<User>,movies: Array<Movie>, winQtt: number){
         this.color = color
         this.users = users
         this.movies = movies
         this.winQtt = winQtt
+        this.id = id
+        this.hitsCount = 0
+        this.won = false
     }
 
     public addHit(movie: Movie){
