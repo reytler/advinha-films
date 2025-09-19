@@ -1,7 +1,5 @@
-import {MovieDto} from "../../domain/dtos/MovieDto"
-export type TParams = Record<string,string>
+export type TParams = Record<string,any>
 export class ServiceMovies {
-    private movies: Array<MovieDto> = []
     private _apiKey: string = ""
     private _baseUrl: string = ""
 
@@ -10,7 +8,7 @@ export class ServiceMovies {
         this._baseUrl = baseUrl
     }
 
-    public async getRandomMovies(queryParams: Array<TParams>): Promise<Array<MovieDto>>{
+    public async getMovies(queryParams: Array<TParams>): Promise<any>{
         const params = new URLSearchParams();
         queryParams.forEach(obj=>{
             Object.entries(obj).forEach(([key, value]) => {
@@ -28,9 +26,20 @@ export class ServiceMovies {
 
         const url: string = `${this._baseUrl}?${params.toString()}`
         const response = await fetch(url,options)
-        const result = response.json()
-        console.log(result)
+        return await response.json()
+    }
 
-        return this.movies
+    public async randomizePage(categoryId:number): Promise<any>{
+        const page = Math.floor(Math.random() * 101);
+        const order = Math.round(Math.random());
+
+        const params: Array<TParams> = [
+            {"api_key":this._apiKey},
+            {"page":page},
+            {"with_genres":categoryId},
+            {"sort_by":`title.${order === 1 ? 'desc' : 'asc'}`},
+        ]
+
+        return this.getMovies(params)
     }
 }
