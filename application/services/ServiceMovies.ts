@@ -37,7 +37,8 @@ export class ServiceMovies {
             {"api_key":this._apiKey},
             {"page":page},
             {"with_genres":categoryId},
-            {"sort_by":`title.${order === 1 ? 'desc' : 'asc'}`},
+            {"sort_by":`popularity.${order === 1 ? 'desc' : 'asc'}`},
+            {"language":'pt-BR'}
         ]
 
         return this.getMovies(params)

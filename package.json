@@ -1,5 +1,5 @@
 {
-  "name": "repositorio-monorepo",
+  "name": "advinha-films",
   "private": true,
   "workspaces": [
     "domain",
@@ -14,5 +14,11 @@
   "author": {
     "name": "Reytler Souza",
     "email": "reytlercompare@hotmail.com"
+  },
+  "devDependencies": {
+    "class-variance-authority": "^0.7.1"
+  },
+  "dependencies": {
+    "tailwind-merge": "^3.3.1"
   }
 }
