@@ -10,7 +10,7 @@ declare global {
 Array.prototype.toMovieDtos = function(this: Movie[]): MovieDto[] {
   return this.map(movie => ({
     id: movie.id,
-    category: "",
+    category: 0,
     movieCover: movie.movieCover,
     name: movie.name,
     teamId: movie.teamId

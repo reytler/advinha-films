@@ -1,0 +1,18 @@
+{
+  "name": "repositorio-monorepo",
+  "private": true,
+  "workspaces": [
+    "domain",
+    "application",
+    "interface"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w interface",
+    "build": "npm run build -w domain && npm run build -w application && npm run build -w interface",
+    "start": "npm run start -w interface"
+  },
+  "author": {
+    "name": "Reytler Souza",
+    "email": "reytlercompare@hotmail.com"
+  }
+}

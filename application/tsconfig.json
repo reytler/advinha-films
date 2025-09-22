@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "declaration": true,
+    "strict": true,
+    "paths": {
+      "@advinha-films/domain/*": ["../domain/src/*"]
+    }
+  },
+  "include": ["./**/*"]
+}

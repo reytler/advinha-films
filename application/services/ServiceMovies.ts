@@ -8,7 +8,7 @@ export class ServiceMovies {
         this._baseUrl = baseUrl
     }
 
-    public async getMovies(queryParams: Array<TParams>): Promise<any>{
+    private async getMovies(queryParams: Array<TParams>): Promise<any>{
         const params = new URLSearchParams();
         queryParams.forEach(obj=>{
             Object.entries(obj).forEach(([key, value]) => {
