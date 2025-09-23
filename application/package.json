@@ -8,6 +8,6 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@repositorio/domain": "file:./domain"
+    "@advinha-films/domain": "file:./domain"
   }
 }

@@ -1,21 +1,10 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { categories } from "@/mocks/categories"
-import {ServiceMovies} from "@advinha-films/application"
-import { useEffect, useState } from "react"
-
-async function obterFilmes(codigoCategoria: number):Promise<void>{
-  const _service = new ServiceMovies("","https://api.themoviedb.org/3/discover/movie")
-  const res = await _service.randomizePage(codigoCategoria)
-  return console.log("RESULTADO: ", res)
-}
+import { useState } from "react"
 
 export default function Home() {
   const [category,setCategory] = useState(0)
-
-  useEffect(()=>{
-    obterFilmes(category)
-  },[category])
 
   return (
     <>

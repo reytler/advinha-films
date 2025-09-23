@@ -70,19 +70,19 @@ export class Room {
         this.teams.find((team:Team)=>team.id === idTeam)?.addUser(user)
     }
 
-    public addMovieInTeam(idTeam: string, movie: Movie): void{
+    private addMovieInTeam(idTeam: string, movie: Movie): void{
         movie.teamId = idTeam;
         this.teams.find((team:Team)=>team.id === idTeam)?.addMovie(movie)
     }
 
-    public insertMovies(): void{
+    private insertMovies(): void{
         if(this.category.movies.length > 0){
             this.movies.concat(this.category.movies)
             this.randomMoviesInTeams()
         }
     }
 
-    public randomMoviesInTeams(): void{
+    private randomMoviesInTeams(): void{
         let first = true;
         this.movies.map((movie)=>{
             this.addMovieInTeam(this.teams[first ? 0 : 1].id,movie)
