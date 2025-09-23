@@ -15,8 +15,11 @@ export class RoomApp{
         
     }
 
-    public async createRoom(codigoCategoria: number, nomeCategoria: string){
+    public async createRoom(codigoCategoria: number, nomeCategoria: string):Promise<string>{
         const result = await this.obterFilmes(codigoCategoria)
+
+        if(result.length === 0)
+            throw new Error("Não foram encontrados filmes...")
 
         const movies: Array<Movie> = this.mapMovies(result as Array<IMovie>)
 
@@ -32,12 +35,20 @@ export class RoomApp{
         teams.push(team2)
 
         this._rooms.push(new Room(idRoom,idRoom,teams,_category))
+
+        return idRoom
     }
 
     public async obterFilmes(codigoCategoria: number):Promise<Array<unknown>>{
-        const _service = new ServiceMovies("","https://api.themoviedb.org/3/discover/movie")
-        const res = await _service.randomizePage(codigoCategoria)
-        return res.results
+        try {
+            const _service = new ServiceMovies("","https://api.themoviedb.org/3/discover/movie")
+            const res = await _service.randomizePage(codigoCategoria)
+            return res.results            
+        } catch (error) {
+            console.error("ERRO AO OBTER FILMES: ",error)
+        }
+
+        return []
     }
 
     public mapMovies(input: Array<IMovie>): Array<Movie>{

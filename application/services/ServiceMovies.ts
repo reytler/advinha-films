@@ -30,6 +30,9 @@ export class ServiceMovies {
     }
 
     public async randomizePage(categoryId:number): Promise<any>{
+        if(this._apiKey.length < 1 )
+            throw new Error("Não é possível buscar os filmes sem uma api_key")
+
         const page = Math.floor(Math.random() * 101);
         const order = Math.round(Math.random());
 
